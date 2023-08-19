@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732282399746",
+    "project_id": "chattiemporeal-be755",
+    "storage_bucket": "chattiemporeal-be755.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732282399746:android:3a1a425cdabc145b3ccb1b",
+        "android_client_info": {
+          "package_name": "com.proyecto.chattiemporeal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732282399746-gf76b7vb72mrjfm8bostnvnom4kk0uub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWbKFE1QKQynd940c1Ypm_bkIyCz_CenM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732282399746-gf76b7vb72mrjfm8bostnvnom4kk0uub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
