@@ -5,15 +5,73 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ChatFragment">
 
+    <LinearLayout
+        android:id="@+id/linearLayoutInicioTegrm"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/azulTgrm"
+
+        >
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            />
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/logo_telegram"
+
+            />
+
+        <TextView
+            android:id="@+id/txtNombreGrupo"
+            android:layout_width="170dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:text="Los RealTime"
+
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="60dp"
+            android:background="@drawable/baseline_more_vert_24"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
+        android:layout_height="40dp"
+        android:layout_below="@+id/linearLayoutInicioTegrm"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/bg_asunto"
         android:gravity="center"
+        android:textStyle="italic"
         android:padding="8dp"
+
         android:text="Chat Compartido"
         android:textSize="18sp" />
+
 
     <ListView
         android:id="@+id/messageListView"
@@ -21,11 +79,16 @@
         android:layout_height="0dp"
         android:layout_above="@+id/messageInputLayout"
         android:layout_below="@id/titleTextView"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="-6dp"
         android:layout_weight="1"
+        android:background="@drawable/fondo_tgm"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
         android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll" />
+        android:transcriptMode="alwaysScroll"
+
+        />
 
     <LinearLayout
         android:id="@+id/messageInputLayout"
@@ -35,19 +98,30 @@
         android:orientation="horizontal"
         android:padding="8dp">
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/baseline_insert_emoticon_24"
+
+            />
+
         <EditText
             android:id="@+id/messageEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type a message" />
+            android:hint="Mensaje" />
 
         <Button
             android:id="@+id/sendButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Send" />
-    </LinearLayout>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/baseline_send_24"
 
+            />
+    </LinearLayout>
 
 </RelativeLayout>
