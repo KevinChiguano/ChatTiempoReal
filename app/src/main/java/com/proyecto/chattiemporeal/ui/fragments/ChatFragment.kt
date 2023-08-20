@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -14,6 +15,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.proyecto.chattiemporeal.R
 import com.proyecto.chattiemporeal.databinding.FragmentChatBinding
+import com.proyecto.chattiemporeal.ui.activities.MainActivity
+import com.proyecto.chattiemporeal.ui.utilities.ChatMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -28,6 +31,7 @@ class ChatFragment : Fragment() {
     private lateinit var messagesRef: DatabaseReference
     private lateinit var messageList: MutableList<String>
     private lateinit var adapter: ArrayAdapter<String>
+    private lateinit var username: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +45,9 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Obtener el nombre de usuario desde los argumentos
+        username = arguments?.getString("username") ?: ""
+
         // Inicializar Firebase
         database = FirebaseDatabase.getInstance()
         messagesRef = database.reference.child("messages")
@@ -52,8 +59,8 @@ class ChatFragment : Fragment() {
         binding.sendButton.setOnClickListener {
             val message = binding.messageEditText.text.toString().trim()
             if (message.isNotEmpty()) {
-                val newMessageRef = messagesRef.push()
-                newMessageRef.setValue(message)
+                val chatMessage = ChatMessage(username, message)
+                messagesRef.push().setValue(chatMessage)
                 binding.messageEditText.text.clear()
             }
         }
@@ -61,8 +68,9 @@ class ChatFragment : Fragment() {
         // Escuchar cambios en la base de datos y actualizar el adaptador
         messagesRef.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val message = snapshot.getValue(String::class.java)
-                if (message != null) {
+                val chatMessage = snapshot.getValue(ChatMessage::class.java)
+                if (chatMessage != null) {
+                    val message = "${chatMessage.username}: ${chatMessage.message}"
                     messageList.add(message)
                     adapter.notifyDataSetChanged()
                 }

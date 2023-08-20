@@ -19,18 +19,25 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+
+        val username = intent.getStringExtra("username")
+        val image = intent.getStringExtra("image")
 
         // Inicializar Firebase
         database = FirebaseDatabase.getInstance()
         messagesRef = database.reference.child("messages")
 
-        // Cargar el fragmento de chat
+        // Cargar el fragmento de chat y pasar el nombre de usuario como argumento
+        val chatFragment = ChatFragment()
+        val bundle = Bundle()
+        bundle.putString("username", username)
+        chatFragment.arguments = bundle
+
         FragmentsManager().replaceFragment(
             supportFragmentManager,
-            binding.frmContainer.id,
-            ChatFragment()
+            R.id.frm_container, // Usar directamente el ID del contenedor sin binding
+            chatFragment
         )
     }
 
