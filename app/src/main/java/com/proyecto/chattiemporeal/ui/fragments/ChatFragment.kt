@@ -1,5 +1,6 @@
 package com.proyecto.chattiemporeal.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.proyecto.chattiemporeal.R
 import com.proyecto.chattiemporeal.databinding.FragmentChatBinding
+import com.proyecto.chattiemporeal.ui.activities.LoginActivity
 import com.proyecto.chattiemporeal.ui.activities.MainActivity
 import com.proyecto.chattiemporeal.ui.utilities.ChatMessage
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +46,10 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.backButton.setOnClickListener{
+            startActivity(Intent(activity,LoginActivity::class.java))
+        }
 
         // Obtener el nombre de usuario desde los argumentos
         username = arguments?.getString("username") ?: ""

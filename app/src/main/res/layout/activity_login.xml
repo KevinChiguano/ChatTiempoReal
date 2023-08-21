@@ -9,11 +9,14 @@
     tools:context=".ui.activities.LoginActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_width="96dp"
+        android:layout_height="108dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginTop="5dp"
+        android:src="@drawable/tele"
+
+        />
 
     <EditText
         android:id="@+id/emailEditText"
@@ -21,20 +24,33 @@
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico"
         android:inputType="textEmailAddress"
-        android:layout_marginBottom="8dp"/>
-
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#0088CC"
+        android:padding="12dp" />
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#0088CC"
+        android:padding="12dp" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"/>
+        android:text="Iniciar Sesión"
+        android:backgroundTint="@color/btn_celeste"/>
 
+    <ImageView
+        android:id="@+id/fdf"
+        android:layout_width="350dp"
+        android:layout_height="411dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/foot"
+
+        />
 </LinearLayout>

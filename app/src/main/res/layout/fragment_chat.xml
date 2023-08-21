@@ -14,15 +14,17 @@
         >
 
         <ImageView
+            android:id="@+id/backButton"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
+            android:clickable="true"
             android:src="@drawable/baseline_arrow_back_24"
             />
 
         <ImageView
-            android:id="@+id/backButton"
+
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
@@ -115,12 +117,12 @@
             android:layout_weight="1"
             android:hint="Mensaje" />
 
-        <Button
+        <ImageButton
             android:id="@+id/sendButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/baseline_send_24"
-
+            android:src="@drawable/baseline_send_24"
+            android:backgroundTint="@color/white"
             />
     </LinearLayout>
 
