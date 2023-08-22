@@ -25,6 +25,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
+/**
+ * ChatFragment es un fragmento que muestra una interfaz de chat en tiempo real.
+ * Permite a los usuarios enviar y recibir mensajes utilizando Firebase Realtime Database.
+ */
 class ChatFragment : Fragment() {
 
     private lateinit var binding: FragmentChatBinding
@@ -35,6 +39,12 @@ class ChatFragment : Fragment() {
     private lateinit var adapter: ArrayAdapter<String>
     private lateinit var username: String
 
+    /**
+     * @param inflater El inflador de diseño.
+     * @param container El contenedor de la vista.
+     * @param savedInstanceState El estado de la instancia guardada.
+     * @return La vista del fragmento.
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,9 +54,14 @@ class ChatFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * @param view La vista del fragmento.
+     * @param savedInstanceState El estado de la instancia guardada.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Configurar el botón para regresar a la pantalla de inicio de sesión
         binding.backButton.setOnClickListener{
             startActivity(Intent(activity,LoginActivity::class.java))
         }
@@ -54,14 +69,18 @@ class ChatFragment : Fragment() {
         // Obtener el nombre de usuario desde los argumentos
         username = arguments?.getString("username") ?: ""
 
-        // Inicializar Firebase
+        // Inicializar Firebase y la referencia a la colección "messages"
         database = FirebaseDatabase.getInstance()
         messagesRef = database.reference.child("messages")
 
+        // Inicializar la lista de mensajes y el adaptador
         messageList = mutableListOf()
-        adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, messageList)
+        adapter = ArrayAdapter(requireContext(),
+            android.R.layout.simple_list_item_1, messageList)
+
         binding.messageListView.adapter = adapter
 
+        // Configurar el botón de enviar mensaje
         binding.sendButton.setOnClickListener {
             val message = binding.messageEditText.text.toString().trim()
             if (message.isNotEmpty()) {

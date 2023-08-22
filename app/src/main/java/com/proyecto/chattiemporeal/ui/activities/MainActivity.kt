@@ -12,7 +12,6 @@ import com.proyecto.chattiemporeal.ui.utilities.FragmentsManager
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
 
     private lateinit var database: FirebaseDatabase
     private lateinit var messagesRef: DatabaseReference
@@ -22,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val username = intent.getStringExtra("username")
-        val image = intent.getStringExtra("image")
 
         // Inicializar Firebase
         database = FirebaseDatabase.getInstance()
